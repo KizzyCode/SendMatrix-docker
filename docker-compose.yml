@@ -1,0 +1,5 @@
+services:
+  sendmatrix-server:
+    build: .
+    volumes:
+      - ./ipc:/var/run/sendmatrix:rw
