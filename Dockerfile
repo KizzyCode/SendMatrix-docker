@@ -17,4 +17,5 @@ RUN adduser --system --disabled-password --shell=/bin/sh --home=/home/sendmatrix
 COPY --from=buildenv /root/.cargo/bin/sendmatrix-server /usr/bin/
 COPY --from=buildenv /root/.cargo/bin/matrix-commander-rs /usr/bin/
 
+USER sendmatrix
 CMD ["/usr/bin/sendmatrix-server"]
