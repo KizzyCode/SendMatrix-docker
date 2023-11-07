@@ -4,3 +4,5 @@
 # Ignore example files
 ipc/*
 !ipc/.gitkeep
+session/*
+!session/.gitkeep

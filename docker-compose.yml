@@ -2,4 +2,20 @@ services:
   sendmatrix-server:
     build: .
     volumes:
+      # The IPC postbox
       - ./ipc:/var/run/sendmatrix:rw
+      # The persistant state for matrix-commander-rs
+      - ./session:/home/sendmatrix/.local/share/matrix-commander-rs:rw
+
+  sendmatrix-server-init:
+    build: .
+    stdin_open: true
+    tty: true
+    command: /bin/sleep 3600
+    profiles:
+      - init
+    volumes:
+      # The IPC postbox
+      - ./ipc:/var/run/sendmatrix:rw
+      # The persistant state for matrix-commander-rs
+      - ./session:/home/sendmatrix/.local/share/matrix-commander-rs:rw
