@@ -1,8 +1,9 @@
 # Build the server
 FROM alpine:latest AS buildenv
 
-RUN apk add cargo libgcc openssl-dev
+RUN apk add cargo binutils-gold clang libgcc openssl-dev
 
+ENV RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=gold"
 RUN cargo install --git https://github.com/KizzyCode/SendMatrix-rust --bins sendmatrix-server
 RUN cargo install matrix-commander
 
